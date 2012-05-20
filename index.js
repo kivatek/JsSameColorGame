@@ -80,7 +80,6 @@ function eraseTiles() {
 }
 
 function fall() {
-	var v = 0;
 	for (var x = 0; x < tiles[0].length; x++) {
 		for (var y = tiles.length-1; y > 0; y--) {
 			if (tiles[y][x] != 0) {
@@ -92,24 +91,28 @@ function fall() {
 				}
 				tiles[y][x] = tiles[y2][x];
 				tiles[y2][x] = 0;
-				v++;
 				break;
 			}
 		}
 	}
 	// スライドが発生する可能性を追加チェック
+	var s = false;
 	for (var x = 0; x < tiles[0].length-1; x++) {
+		var v = 0;
 		for (var y = 0; y < tiles.length; y++) {
 			if (tiles[y][x] == 0) {
 				v++;
 			}
 		}
+		if (v == tiles.length) {
+			s = true;
+		}
 	}
-	if (v == 0) {
-		phase = 0;
-	} else {
-		drawTiles();
+	drawTiles();
+	if (s) {
 		setTimeout(slide, 400);
+	} else {
+		phase = 0;
 	}
 }
 
