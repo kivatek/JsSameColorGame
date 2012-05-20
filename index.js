@@ -7,7 +7,7 @@ function Format(format /*,obj1,obj2...*/) {
 }
 
 function drawCursor() {
-	if ((oldx >= 0) && (oldy >= 0)) {
+	if ((oldx >= 0) && (oldy >= 0) && ((oldx != cx) || (oldy != cy))) {
 		var oldi = Format("dx{0}y{1}", oldx, oldy);
 		var olde = document.getElementById(oldi);
 		olde.innerHTML = '';
@@ -183,6 +183,7 @@ window.onkeydown = function(e) {
 	// 39: right
 	// 40: down
 	if (k == 32) {
+		// スペースキーが押されたとき
 		eraseTiles();
 	} else {
 		k = k - 37;
@@ -195,10 +196,10 @@ window.onkeydown = function(e) {
 			cy = Math.max(0, cy - 1);
 		}
 		else if (k == 2) {
-			cx = Math.min(tiles[0].length-1, cx + 1);
+			cx = Math.min(MAX_COLUMNS-1, cx + 1);
 		}
 		else if (k == 3) {
-			cy = Math.min(tiles[0].length-1, cy + 1);
+			cy = Math.min(MAX_ROWS-1, cy + 1);
 		}
 		drawCursor();
 	}
