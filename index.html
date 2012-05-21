@@ -2,51 +2,52 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>同じ色を消すゲーム</title>
+		<title>同じ色のタイルを消すゲーム</title>
+    <link rel=stylesheet type="text/css" href="style.css">
 		<script type="text/javascript" src="index.js"></script>
 	</head>
 	<body>
 		<table>
 			<tr>
-				<td id="tx0y0" width="64px" height="64px" bgcolor="white"><div id="dx0y0"></div></td>
-				<td id="tx1y0" width="64px" height="64px" bgcolor="white"><div id="dx1y0"></div></td>
-				<td id="tx2y0" width="64px" height="64px" bgcolor="white"><div id="dx2y0"></div></td>
-				<td id="tx3y0" width="64px" height="64px" bgcolor="white"><div id="dx3y0"></div></td>
-				<td id="tx4y0" width="64px" height="64px" bgcolor="white"><div id="dx4y0"></div></td>
-				<td id="tx5y0" width="64px" height="64px" bgcolor="white"><div id="dx5y0"></div></td>
+				<td><div id="dx0y0" class="tile"></div></td>
+				<td><div id="dx1y0" class="tile"></div></td>
+				<td><div id="dx2y0" class="tile"></div></td>
+				<td><div id="dx3y0" class="tile"></div></td>
+				<td><div id="dx4y0" class="tile"></div></td>
+				<td><div id="dx5y0" class="tile"></div></td>
 			</tr>
 			<tr>
-				<td id="tx0y1" width="64px" height="64px" bgcolor="white"><div id="dx0y1"></div></td>
-				<td id="tx1y1" width="64px" height="64px" bgcolor="white"><div id="dx1y1"></div></td>
-				<td id="tx2y1" width="64px" height="64px" bgcolor="white"><div id="dx2y1"></div></td>
-				<td id="tx3y1" width="64px" height="64px" bgcolor="white"><div id="dx3y1"></div></td>
-				<td id="tx4y1" width="64px" height="64px" bgcolor="white"><div id="dx4y1"></div></td>
-				<td id="tx5y1" width="64px" height="64px" bgcolor="white"><div id="dx5y1"></div></td>
-			</tr>
+				<td><div id="dx0y1" class="tile"></div></td>
+				<td><div id="dx1y1" class="tile"></div></td>
+				<td><div id="dx2y1" class="tile"></div></td>
+				<td><div id="dx3y1" class="tile"></div></td>
+				<td><div id="dx4y1" class="tile"></div></td>
+				<td><div id="dx5y1" class="tile"></div></td>
+			</tr>                
 			<tr>
-				<td id="tx0y2" width="64px" height="64px" bgcolor="white"><div id="dx0y2"></div></td>
-				<td id="tx1y2" width="64px" height="64px" bgcolor="white"><div id="dx1y2"></div></td>
-				<td id="tx2y2" width="64px" height="64px" bgcolor="white"><div id="dx2y2"></div></td>
-				<td id="tx3y2" width="64px" height="64px" bgcolor="white"><div id="dx3y2"></div></td>
-				<td id="tx4y2" width="64px" height="64px" bgcolor="white"><div id="dx4y2"></div></td>
-				<td id="tx5y2" width="64px" height="64px" bgcolor="white"><div id="dx5y2"></div></td>
-			</tr>
+				<td><div id="dx0y2" class="tile"></div></td>
+				<td><div id="dx1y2" class="tile"></div></td>
+				<td><div id="dx2y2" class="tile"></div></td>
+				<td><div id="dx3y2" class="tile"></div></td>
+				<td><div id="dx4y2" class="tile"></div></td>
+				<td><div id="dx5y2" class="tile"></div></td>
+			</tr>                
 			<tr>
-				<td id="tx0y3" width="64px" height="64px" bgcolor="white"><div id="dx0y3"></div></td>
-				<td id="tx1y3" width="64px" height="64px" bgcolor="white"><div id="dx1y3"></div></td>
-				<td id="tx2y3" width="64px" height="64px" bgcolor="white"><div id="dx2y3"></div></td>
-				<td id="tx3y3" width="64px" height="64px" bgcolor="white"><div id="dx3y3"></div></td>
-				<td id="tx4y3" width="64px" height="64px" bgcolor="white"><div id="dx4y3"></div></td>
-				<td id="tx5y3" width="64px" height="64px" bgcolor="white"><div id="dx5y3"></div></td>
-			</tr>
+				<td><div id="dx0y3" class="tile"></div></td>
+				<td><div id="dx1y3" class="tile"></div></td>
+				<td><div id="dx2y3" class="tile"></div></td>
+				<td><div id="dx3y3" class="tile"></div></td>
+				<td><div id="dx4y3" class="tile"></div></td>
+				<td><div id="dx5y3" class="tile"></div></td>
+			</tr>                
 			<tr>
-				<td id="tx0y4" width="64px" height="64px" bgcolor="white"><div id="dx0y4"></div></td>
-				<td id="tx1y4" width="64px" height="64px" bgcolor="white"><div id="dx1y4"></div></td>
-				<td id="tx2y4" width="64px" height="64px" bgcolor="white"><div id="dx2y4"></div></td>
-				<td id="tx3y4" width="64px" height="64px" bgcolor="white"><div id="dx3y4"></div></td>
-				<td id="tx4y4" width="64px" height="64px" bgcolor="white"><div id="dx4y4"></div></td>
-				<td id="tx5y4" width="64px" height="64px" bgcolor="white"><div id="dx5y4"></div></td>
-			</tr>
+				<td><div id="dx0y4" class="tile"></div></td>
+				<td><div id="dx1y4" class="tile"></div></td>
+				<td><div id="dx2y4" class="tile"></div></td>
+				<td><div id="dx3y4" class="tile"></div></td>
+				<td><div id="dx4y4" class="tile"></div></td>
+				<td><div id="dx5y4" class="tile"></div></td>
+			</tr>                
 		</table>
 	</body>
 </html>

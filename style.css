@@ -1,0 +1,6 @@
+.tile {
+	width: 64px;
+	height: 64px;
+	padding: 0;
+	background-color: white;
+}

@@ -20,7 +20,7 @@ function drawCursor() {
 function drawTiles() {
 	for (var y = 0; y < tiles.length; y++) {
 		for (var x = 0; x < tiles[0].length; x++) {
-			var i = Format("tx{0}y{1}", x, y);
+			var i = Format("dx{0}y{1}", x, y);
 			var t = document.getElementById(i);
 			var c = tiles[y][x];
 			if (c == 1) {
@@ -42,12 +42,13 @@ function drawTiles() {
 // 同色タイルを消したことを一拍見せた後に下方へずらす処理。
 function checkTileColor(x, y, c) {
 	if ((x >= 0) && (x < tiles[0].length) && (y >= 0) && (y < tiles.length)) {
-		if (tiles[y][x] != c) {
-			return;
-		}
 		if (check[y][x] == 1) {
 			return;
 		}
+		if ((tiles[y][x] != c) || (tiles[y][x] == 0)) {
+			return;
+		}
+		checkedCount++;
 		check[y][x] = 1;
 		checkTileColor(x, y-1, c);
 		checkTileColor(x-1, y, c);
@@ -57,22 +58,28 @@ function checkTileColor(x, y, c) {
 }
 
 function eraseTiles() {
+	// つながりチェック用の情報を消去する。
 	for (var y = 0; y < check.length; y++) {
 		for (var x = 0; x < check[0].length; x++) {
 			check[y][x] = 0;
 		}
 	}
+	
+	// スペースキーを押したときにカーソル位置の色のタイルが何個つながっているかを覚える変数
+	checkedCount = 0;
+	
+	// つながりチェック実行
 	checkTileColor(cx, cy, tiles[cy][cx]);
-	var v = 0;
-	for (var y = 0; y < check.length; y++) {
-		for (var x = 0; x < check[0].length; x++) {
-			if (check[y][x] == 1) {
-				tiles[y][x] = 0;
-				v++;
+	
+	// 同じ色のタイルが２個以上つながっている
+	if (checkedCount > 1) {
+		for (var y = 0; y < check.length; y++) {
+			for (var x = 0; x < check[0].length; x++) {
+				if (check[y][x] == 1) {
+					tiles[y][x] = 0;
+				}
 			}
 		}
-	}
-	if (v > 0) {
 		drawTiles();
 		phase = 1;
 		setTimeout(fall, 400);
@@ -80,6 +87,7 @@ function eraseTiles() {
 }
 
 function fall() {
+	// 消えたタイルの上にあるタイルが下へ落ちる処理
 	for (var x = 0; x < tiles[0].length; x++) {
 		for (var y = tiles.length-1; y > 0; y--) {
 			if (tiles[y][x] != 0) {
@@ -117,6 +125,7 @@ function fall() {
 }
 
 function slide() {
+	// タイルが消えて一列全てが空きになった場合、画面左へ隙間を詰める
 	var v = new Array();
 	for (var x = 0; x < tiles[0].length; x++) {
 		var i = 0;
@@ -149,6 +158,23 @@ function slide() {
 	drawTiles();
 	phase = 0;
 }
+
+//function checkFinish() {
+//	for (var y = 0; y < tiles.length; y++) {
+//		for (var x = 0; x < tiles[0].length; x++) {
+//			if (tiles[y][x] != 1) {
+//				// 一つでも残りがある場合はクリアしていない
+//				// todo: ２個以上のつながりがなく手詰まりの状態を判定すること
+//				return;
+//			}
+//		}
+//	}
+//	setTimeout( function(){
+//		shuffle();
+//		drawTiles();
+//		drawCursor();
+//	}, 3000);
+//}
 
 function shuffle() {
 	for (var y = 0; y < tiles.length; y++) {
@@ -215,9 +241,14 @@ window.onload = function() {
 	// 配列を初期化
 	prepare();
 	
+	// ゲームの入力受付状態を覚える変数
 	phase = 0;
+	
+	// 移動する前のカーソルが置いてあった位置を覚える変数
 	oldx = -1;
 	oldy = -1;
+	
+	// カーソルの現在位置を覚える変数
 	cx = 0;
 	cy = 0;
 	
